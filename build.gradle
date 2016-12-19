@@ -1,0 +1,54 @@
+group 'cn.dianjingquan'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Brixton.SR5'
+    }
+}
+
+repositories {
+    //mavenCentral()
+
+    ivy {url "../local-repo" }
+
+    maven{ url 'http://maven.aliyun.com/nexus/content/groups/public'}
+    maven{ url 'http://repo2.maven.org/maven2'}
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile 'com.zaxxer:HikariCP:2.5.0'
+    compile 'mysql:mysql-connector-java:6.0.3'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa:1.4.0.RELEASE'
+    compile 'org.springframework.cloud:spring-cloud-starter-config:1.1.3.RELEASE'
+    //compile 'org.springframework.cloud:spring-cloud-starter-eureka:1.1.6.RELEASE'
+    compile 'org.springframework.cloud:spring-cloud-starter-consul-discovery:1.1.0.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-actuator:1.4.0.RELEASE'
+    compile 'io.springfox:springfox-swagger2:2.6.0'
+    compile 'io.springfox:springfox-swagger-ui:2.6.0'
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    compile 'ch.qos.logback:logback-core:1.1.7'
+    compile 'ch.qos.logback:logback-classic:1.1.7'
+    compile 'redis.clients:jedis:2.9.0'
+    compile files('libs/common-1.0.jar')
+}
+
+jar{
+    manifest{
+        attributes 'Main-Class':'cn.dianjingquan.user.Application'
+    }
+}

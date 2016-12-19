@@ -1,0 +1,47 @@
+server:
+  port: 9020
+  address: 10.10.20.52
+redis:
+  host: 10.10.50.232
+  port: 6379
+  timeout:  8000
+  password: neotvredis
+spring:
+  application:
+    name: cn.dianjingquan.user
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ees_users?autoReconnect=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: wjs007008
+    #url: jdbc:mysql://rdsanqi6zanqi6zpublic.mysql.rds.aliyuncs.com/djq_match?autoReconnect=true&useSSL=false
+    #username: "ees_test"
+    #password: "djq-EES_2016!@#"
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: mysql
+    show-sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+  cloud:
+    consul:
+      enabled: true
+      host: 10.10.50.232
+      port: 8500
+      discovery:
+        enabled: true
+        healthCheckInterval: 20s
+        instanceId: user_center_service_instance_1
+        serviceName: user_center_service
+        tags: dev
+        health-check-url: http://${spring.cloud.consul.host}:${server.port}/health
+        #health-check-url: http://10.10.30.131:9020/health
+
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://10.10.50.232:8761/eureka/
+#    instance:
+#      preferIpAddress: true
