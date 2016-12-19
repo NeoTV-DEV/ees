@@ -8,13 +8,13 @@ redis:
   password: neotvredis
 spring:
   application:
-    name: cn.dianjingquan.user
+    name: cn.dianjingquan.api
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/ees_users?autoReconnect=true&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://10.10.50.232:3306/m_match?autoReconnect=true&useSSL=false&serverTimezone=UTC
     username: root
-    password: wjs007008
+    password: neotvmysql
     #url: jdbc:mysql://rdsanqi6zanqi6zpublic.mysql.rds.aliyuncs.com/djq_match?autoReconnect=true&useSSL=false
     #username: "ees_test"
     #password: "djq-EES_2016!@#"
@@ -33,8 +33,8 @@ spring:
       discovery:
         enabled: true
         healthCheckInterval: 20s
-        instanceId: user_center_service_instance_1
-        serviceName: user_center_service
+        instanceId: ees_service_instance_1
+        serviceName: ees_service
         tags: dev
         health-check-url: http://${spring.cloud.consul.host}:${server.port}/health
         #health-check-url: http://10.10.30.131:9020/health

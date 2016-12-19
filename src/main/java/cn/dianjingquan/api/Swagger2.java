@@ -25,14 +25,14 @@ public class Swagger2 {
                 .host("www.dianjingquan.cn")
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("cn.dianjingquan.user"))
+                .apis(RequestHandlerSelectors.basePackage("cn.dianjingquan.api"))
                 .paths(PathSelectors.any())
                 .build();
     }
 
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("电竞圈v1.5 用户中心服务")
+                .title("电竞圈v1.5 EES")
                 .description("API文档")
                 .termsOfServiceUrl("http://www.dianjingquan.cn/")
                 .contact(new Contact("Tommy WU","","wujs@neotv.me"))

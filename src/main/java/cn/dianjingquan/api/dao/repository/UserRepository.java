@@ -1,8 +1,8 @@
-package cn.dianjingquan.user.dao.repository;
+package cn.dianjingquan.api.dao.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import cn.dianjingquan.user.dao.model.User;
+import cn.dianjingquan.api.dao.model.User;
 import org.springframework.stereotype.Repository;
 
 /**

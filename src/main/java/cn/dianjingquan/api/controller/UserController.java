@@ -1,4 +1,4 @@
-package cn.dianjingquan.user.controller;
+package cn.dianjingquan.api.controller;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import io.swagger.annotations.Api;

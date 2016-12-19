@@ -1,4 +1,4 @@
-package cn.dianjingquan.user.controller;
+package cn.dianjingquan.api.controller;
 
 import cn.dianjingquan.utils.CheckInputHelper;
 import com.fasterxml.jackson.databind.JsonNode;

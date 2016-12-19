@@ -1,4 +1,4 @@
-package cn.dianjingquan.user.dao.model;
+package cn.dianjingquan.api.dao.model;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import org.hibernate.annotations.Type;
