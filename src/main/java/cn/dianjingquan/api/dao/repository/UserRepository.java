@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by tommy on 2016-10-19.
  * user center service
- * cn.dianjingquan.user.dao.repository.
+ * cn.dianjingquan.api.dao.repository.UserRepository
  */
-@Repository
-public interface UserRepository extends JpaRepository<User,String> {
-}
+//@Repository
+//public interface UserRepository extends JpaRepository<User,String> {
+//}

@@ -1,5 +1,7 @@
 package cn.dianjingquan.api.dao.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import org.hibernate.annotations.Type;
 
@@ -13,52 +15,58 @@ import java.util.UUID;
 /**
  * Created by tommy on 2016-10-19.
  * user center service
- * cn.dianjingquan.user.dao.model.
+ * cn.dianjingquan.api.dao.model.User
  */
-@Entity
-@Table(name = "user_base")
-public class User {
-    @Id
-    @Type(type = "uuid-char")
-    private UUID id;
+public class User extends UserLoginReturn {
+   // @Id
+   // @Type(type = "uuid-char")
+   // private UUID id;
 
-    private long sn;
-
-    @Column(name = "account_name")
+    @JsonProperty("user_name")
     private String accountName;
 
-    @Column(name = "nick_name")
+    @JsonProperty("nick_name")
     private String nickName;
 
-    @Column(name = "pwd")
+    @JsonProperty("pwd")
     private String password;
 
+    @JsonProperty("avatar")
     private int avatar;
 
+    @JsonProperty("gender")
     private int gender;
 
-    @Column(length = 11)
+    @JsonProperty("mobile")
     private String mobile;
 
-    @Column(name = "bg_img")
+    @JsonProperty("bg_img")
     private int bgImg;
 
-    @Column(name = "un_procs")
-    private String unProcess;
+    @JsonProperty("bg_img_url")
+    private String bgImgUrl;
 
+    @JsonProperty("avatar_url")
+    private String avatarUrl;
+
+    @JsonProperty("enabled")
     private boolean enabled = true;
 
-    @Column(name = "is_push_msg")
-    private boolean isPushMsg = true;
+    @JsonProperty("isAuthentication")
+    private boolean isAuthentication;
 
-    @Column(name = "id_card")
+    @JsonProperty("idCard")
     private String idCard;
 
+    @JsonProperty("countryId")
     private int nationality;
 
-    @Column(name = "create_time")
+    @JsonIgnore
     private Timestamp createTime;
 
-    @Column(name = "update_time")
+    @JsonIgnore
     private Timestamp updateTime;
+
+    @JsonProperty("is_msg_setting")
+    private UserMsgSettings isMsgSetting;
 }

@@ -20,11 +20,11 @@ import cn.dianjingquan.*;
 /**
  * Created by tommy on 2016-10-19.
  * usercenter
- * cn.dianjingquan.user.controller.
+ * cn.dianjingquan.api.controller.CodeController
  */
 @RestController
-@RequestMapping("/v1/uc/code")
-@Api(value = "验证码 API ",description = "<=请点击----验证码接口详情")
+@RequestMapping("/v1/match/user/code")
+@Api(value = "验证码 API",description = "验证码 API")
 public class CodeController {
     @ApiOperation(value = "注册用户获取验证码", notes = "根据手机号获取验证码,返回一个4位验证码")
     @RequestMapping(value = "/{mobile}",method = RequestMethod.POST)

@@ -49,6 +49,6 @@ dependencies {
 
 jar{
     manifest{
-        attributes 'Main-Class':'cn.dianjingquan.user.Application'
+        attributes 'Main-Class':'cn.dianjingquan.api.Application'
     }
 }

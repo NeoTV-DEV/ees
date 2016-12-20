@@ -11,7 +11,7 @@ import springfox.documentation.annotations.ApiIgnore;
 /**
  * Created by tommy on 2016-10-25.
  * usercenter
- * cn.dianjingquan.user.controller.
+ * cn.dianjingquan.api.controller.MSController
  */
 @RestController
 @ApiIgnore

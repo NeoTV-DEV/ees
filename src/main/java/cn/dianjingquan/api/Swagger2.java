@@ -1,4 +1,4 @@
-package cn.dianjingquan.user;
+package cn.dianjingquan.api;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,8 +32,8 @@ public class Swagger2 {
 
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("电竞圈v1.5 EES")
-                .description("API文档")
+                .title("电竞圈 EES v1.5")
+                .description("API 接口文档")
                 .termsOfServiceUrl("http://www.dianjingquan.cn/")
                 .contact(new Contact("Tommy WU","","wujs@neotv.me"))
                 .license("GPL V2")
