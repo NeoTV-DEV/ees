@@ -38,7 +38,7 @@ public class Swagger2 {
                 .contact(new Contact("Tommy WU","","wujs@neotv.me"))
                 .license("GPL V2")
                 .licenseUrl("https://www.gnu.org/licenses/gpl-2.0.html")
-                .version("1.0")
+                .version("3.0")
                 .build();
     }
 }
