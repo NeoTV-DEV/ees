@@ -168,18 +168,20 @@ public class MatchDetail {
     @JsonProperty("enroll_detail")
     protected List<Enroll> enrollList;
 
-    protected String ruleList;
+    @JsonProperty("rule_list")
+    protected List<Rule> ruleList;
 
-    protected String rewardList;
+    @JsonProperty("reward_list")
+    protected List<Reward> rewardList;
 
     @JsonProperty("ranking_group")
-    protected String rankingGroup;
+    protected List<Ranking> rankingGroup;
 
     @JsonProperty("referee_list")
-    protected String refereeList;
+    protected List<Referee> refereeList;
 
     @JsonProperty("optional_info_list")
-    protected String optionalInfoList;
+    protected List<DynamicEnrollProperty> optionalInfoList;
 
     @JsonProperty("custom_property_list")
     protected List<CustomProperty> customPropertyList;

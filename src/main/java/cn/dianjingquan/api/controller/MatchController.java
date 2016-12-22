@@ -2,6 +2,7 @@ package cn.dianjingquan.api.controller;
 
 import cn.dianjingquan.api.dao.model.EventList;
 import cn.dianjingquan.api.dao.model.MatchDetail;
+import cn.dianjingquan.api.dao.model.MyDJQMatchDetail;
 import cn.dianjingquan.api.dao.model.MyDJQMatchView;
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/v1/match")
 @Api(value = "赛事详情 API",description = "赛事详情 API")
 public class MatchController {
-    @ApiOperation(value = "获取我的电竞圈赛事列表", notes = "", response = MatchDetail.class, consumes = "application/json")
+    @ApiOperation(value = "赛事详情", notes = "note: 未登录状态不需要带access_token", response = MyDJQMatchDetail.class, consumes = "application/json")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "比赛id", paramType = "query", dataType = "long", required = true),
             @ApiImplicitParam(name = "access_token", value = "token", paramType = "query", dataType = "string")
@@ -31,7 +32,7 @@ public class MatchController {
             @ApiResponse(code = 500,message = "服务端内部错误"),
     })
     @GetMapping("/detail")
-    public MatchDetail getAll(@PathVariable long id, @PathVariable String access_token){
-        return new MatchDetail();
+    public MyDJQMatchDetail getAll(@PathVariable long id, @PathVariable String access_token){
+        return new MyDJQMatchDetail();
     }
 }
