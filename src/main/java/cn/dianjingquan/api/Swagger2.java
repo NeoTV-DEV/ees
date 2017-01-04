@@ -1,7 +1,12 @@
 package cn.dianjingquan.api;
 
+import cn.dianjingquan.api.controller.MatchBuildController;
+import cn.dianjingquan.api.dao.model.Referee;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScans;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.context.request.async.DeferredResult;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -14,15 +19,17 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * Created by tommy on 2016-10-25.
  * usercenter
- * cn.dianjingquan.user.
+ * cn.dianjingquan.api.Swagger2
  */
 @Configuration
 @EnableSwagger2
 public class Swagger2 {
     @Bean
-    public Docket createRestApi(){
+    public Docket eesApi(){
         return new Docket(DocumentationType.SWAGGER_2)
-                .host("www.dianjingquan.cn")
+                .groupName("ees-full-api")
+                .genericModelSubstitutes(DeferredResult.class)
+                .useDefaultResponseMessages(false)
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("cn.dianjingquan.api"))
