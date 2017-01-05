@@ -2,10 +2,9 @@ package cn.dianjingquan.api.controller;
 
 import cn.dianjingquan.api.dao.model.Error;
 import cn.dianjingquan.api.dao.model.body.*;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import cn.dianjingquan.api.dao.model.entity.MatchDetail;
+import cn.dianjingquan.api.dao.model.entity.VS;
+import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -113,5 +112,21 @@ public class VSController {
     @RequestMapping(value = "/v1/match/vs/result/img", method = RequestMethod.DELETE)
     public Error deleteResultImg(@PathVariable long id,@PathVariable String access_token) {
         return new Error();
+    }
+
+    @ApiOperation(value = "VS详情", notes = "", response = VS.class, consumes = "application/json", produces = "application/json")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "vs_id", paramType = "query", dataType = "long", required = true),
+            @ApiImplicitParam(name = "match_id", value = "match_id", paramType = "query", dataType = "long", required = true),
+            @ApiImplicitParam(name = "access_token", value = "token", paramType = "query", dataType = "string")
+    })
+    @ApiResponses({
+            @ApiResponse(code = 200,message = "操作成功返回赛事列表"),
+            @ApiResponse(code = 400,message = "客户端请求错误"),
+            @ApiResponse(code = 500,message = "服务端内部错误"),
+    })
+    @GetMapping("/v3/match/vs/query")
+    public VS getByQueryV3(@PathVariable long id, @PathVariable long matchId, @PathVariable String access_token){
+        return new VS();
     }
 }
