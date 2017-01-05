@@ -31,4 +31,20 @@ public class MatchDetailController {
     public MatchDetail getDetail(@PathVariable long id, @PathVariable String access_token){
         return new MatchDetail();
     }
+
+    @ApiOperation(value = "赛事详情-参赛名单页", notes = "note: 未登录状态不需要带access_token", response = MatchDetail.class, consumes = "application/json", produces = "application/json")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "比赛id", paramType = "query", dataType = "long", required = true),
+            @ApiImplicitParam(name = "access_token", value = "token", paramType = "query", dataType = "string")
+    })
+    @ApiResponses({
+            @ApiResponse(code = 200,message = "操作成功返回赛事列表"),
+            @ApiResponse(code = 400,message = "客户端请求错误"),
+            @ApiResponse(code = 500,message = "服务端内部错误"),
+    })
+    @GetMapping("/name_list")
+    public MatchDetail getNameList(@PathVariable long id, @PathVariable String access_token){
+        return new MatchDetail();
+    }
+
 }
