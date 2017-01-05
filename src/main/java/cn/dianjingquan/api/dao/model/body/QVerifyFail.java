@@ -21,7 +21,7 @@ public class QVerifyFail {
     @JsonProperty(value = "key")
     protected String key;
 
-    @ApiModelProperty(name = "reason",value = "审核原有", required = true)
+    @ApiModelProperty(name = "reason",value = "审核原因", required = true)
     @JsonProperty(value = "reason")
     protected String reason;
 }
