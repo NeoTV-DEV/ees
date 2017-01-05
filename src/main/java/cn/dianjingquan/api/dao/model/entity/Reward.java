@@ -21,7 +21,11 @@ public class Reward {
     @JsonProperty(value = "name")
     protected String name;
 
-    @ApiModelProperty(name = "unit",value = "名次", required = true, allowableValues = "0,1,2,3")
+    @ApiModelProperty(name = "unit",value = "币种", required = true, allowableValues = "0,1,2,3")
     @JsonProperty(value = "unit")
     protected int unit;
+
+    @ApiModelProperty(name = "friendly_reward",value = "名次显示", readOnly = true)
+    @JsonProperty(value = "friendly_reward")
+    protected String friendlyReward;
 }
