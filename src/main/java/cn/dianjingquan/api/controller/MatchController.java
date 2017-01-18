@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/v1/match")
-@Api(value = "v1.0 赛事详情 API",description = "v1.0 赛事详情 API")
+@Api(value = "v1.0 赛事详情 API",tags = "赛事详情", description = "API v1.0")
 public class MatchController {
     @ApiOperation(value = "赛事详情", notes = "note: 未登录状态不需要带access_token", response = MyDJQMatchDetail.class, consumes = "application/json")
     @ApiImplicitParams({

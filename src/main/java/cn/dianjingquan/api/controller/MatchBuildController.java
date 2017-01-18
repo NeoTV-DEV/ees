@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/v3/match/builder")
-@Api(value = "构建赛事 API",description = "构建赛事 API")
+@Api(value = "构建赛事 API",tags = "构建赛事", description = "API")
 public class MatchBuildController {
     @ApiOperation(value = "创建赛事第一步", notes = "", response = Error.class, produces = "application/json", consumes = "application/json")
     @ApiResponses({

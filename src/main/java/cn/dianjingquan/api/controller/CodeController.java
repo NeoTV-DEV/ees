@@ -24,7 +24,7 @@ import cn.dianjingquan.*;
  */
 @RestController
 @RequestMapping("/v1/match/user/code")
-@Api(value = "验证码 API",description = "验证码 API")
+@Api(value = "验证码 API",tags = "验证码", description = "API")
 public class CodeController {
     @ApiOperation(value = "注册用户获取验证码", notes = "根据手机号获取验证码,返回一个4位验证码")
     @RequestMapping(value = "/{mobile}",method = RequestMethod.POST)

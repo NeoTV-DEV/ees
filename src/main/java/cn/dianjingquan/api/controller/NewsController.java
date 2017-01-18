@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 @RestController
 @RequestMapping("/v1/match/news")
-@Api(value = "新闻列表 API",description = "新闻列表 API")
+@Api(value = "新闻列表 API",tags = "新闻列表", description = "API")
 public class NewsController {
     @ApiOperation(value = "获取新闻列表", notes = "", responseContainer = "List", response = News.class, consumes = "application/json")
     @ApiImplicitParams({

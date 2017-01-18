@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
  * cn.dianjingquan.api.controller.MatchControlController
  */
 @RestController
-@Api(value = "赛事控制 API", description = "赛事控制 API")
+@Api(value = "赛事控制 API", tags = "赛事控制", description = "API")
 public class MatchControlController {
     @ApiOperation(value = "报名开始", notes = "", response = Error.class, produces = "application/json", consumes = "application/json")
     @ApiImplicitParams({

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
  * cn.dianjingquan.api.controller.VSController
  */
 @RestController
-@Api(value = "对阵控制 API", description = "对阵控制 API")
+@Api(value = "对阵控制 API", tags = "对阵控制", description = "API")
 public class VSController {
     @ApiOperation(value = "提交比分", notes = "", response = Error.class, produces = "application/json", consumes = "application/json")
     @ApiResponses({

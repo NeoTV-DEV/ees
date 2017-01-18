@@ -128,6 +128,10 @@ public class MatchDetail {
     @JsonProperty("is_pass")
     protected boolean isPass;
 
+    @ApiModelProperty(name = "is_autoend",value = "是否自动结束", required = true)
+    @JsonProperty("is_autoend")
+    protected boolean isAutoEnd;
+
     @ApiModelProperty(name = "vs_life_cycle",value = "vs生命周期", allowableValues = "1,2,3", required = true)
     @JsonProperty(value = "vs_life_cycle", defaultValue = "1")
     protected int vsLifeCycle;

@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 @RestController
 @RequestMapping("/v1/match/bigeyes")
-@Api(value = "大眼列表 API",description = "大眼列表 API")
+@Api(value = "大眼列表 API", tags = "大眼列表", description = "API")
 public class BigEyeController {
     @ApiOperation(value = "获取大眼列表", notes = "", responseContainer = "List", response = BigEye.class, consumes = "application/json")
     @ApiImplicitParams({

@@ -15,7 +15,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/v3/match")
-@Api(value = "赛事列表 API",description = "赛事列表 API")
+@Api(value = "赛事列表 API",tags = "赛事列表", description = "API")
 public class MatchQueryController {
     @ApiOperation(value = "获取赛事列表", notes = "", response = MatchList.class, consumes = "application/json")
     @ApiImplicitParams({

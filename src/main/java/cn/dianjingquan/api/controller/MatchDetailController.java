@@ -2,6 +2,7 @@ package cn.dianjingquan.api.controller;
 
 import cn.dianjingquan.api.dao.model.MyDJQMatchDetail;
 import cn.dianjingquan.api.dao.model.entity.MatchDetail;
+import cn.dianjingquan.api.dao.model.entity.MatchNameList;
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/v3/match")
-@Api(value = "v1.5 赛事详情 API",description = "v1.5 赛事详情 API")
+@Api(value = "v1.5 赛事详情 API",tags = "赛事详情", description = "API v1.5")
 public class MatchDetailController {
     @ApiOperation(value = "赛事详情页", notes = "note: 未登录状态不需要带access_token", response = MatchDetail.class, consumes = "application/json", produces = "application/json")
     @ApiImplicitParams({
@@ -32,7 +33,7 @@ public class MatchDetailController {
         return new MatchDetail();
     }
 
-    @ApiOperation(value = "赛事详情-参赛名单页", notes = "note: 未登录状态不需要带access_token", response = MatchDetail.class, consumes = "application/json", produces = "application/json")
+    @ApiOperation(value = "赛事详情-参赛名单页", notes = "note: 未登录状态不需要带access_token", response = MatchNameList.class, consumes = "application/json", produces = "application/json")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "比赛id", paramType = "query", dataType = "long", required = true),
             @ApiImplicitParam(name = "access_token", value = "token", paramType = "query", dataType = "string")
@@ -43,8 +44,8 @@ public class MatchDetailController {
             @ApiResponse(code = 500,message = "服务端内部错误"),
     })
     @GetMapping("/name_list")
-    public MatchDetail getNameList(@PathVariable long id, @PathVariable String access_token){
-        return new MatchDetail();
+    public MatchNameList getNameList(@PathVariable long id, @PathVariable String access_token){
+        return new MatchNameList();
     }
 
 }

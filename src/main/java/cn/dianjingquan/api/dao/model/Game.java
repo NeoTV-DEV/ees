@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * Created by tommy on 2016-12-20.
  * ees
- * cn.dianjingquan.api.dao.model.
+ * cn.dianjingquan.api.dao.model.Game
  */
 public class Game {
     @JsonProperty("id")

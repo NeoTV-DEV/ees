@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/v1/match/user")
-@Api(value = "用户操作 API", description = "用户 API")
+@Api(value = "用户操作 API", tags = "用户", description = "API")
 public class UserController {
     @ApiOperation(value = "用户注册", notes = "", response = UserSession.class, consumes = "application/json")
     @ApiImplicitParams({

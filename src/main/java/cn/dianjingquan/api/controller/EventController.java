@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 @RestController
 @RequestMapping("/v1/match/event")
-@Api(value = "事件 API", description = "事件服务 API")
+@Api(value = "事件 API", tags = "事件服务", description = "API")
 public class EventController {
     @ApiOperation(value = "获取事件列表", notes = "", response = EventList.class, consumes = "application/json")
     @ApiImplicitParams({

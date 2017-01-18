@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * cn.dianjingquan.api.controller.DynamicController
  */
 @RestController
-@Api(value = "赛事动态 API", description = "赛事动态 API")
+@Api(value = "赛事动态 API", tags = "赛事动态", description = "API")
 public class DynamicController {
     @ApiOperation(value = "获取赛事动态列表", notes = "", response = DynamicList.class, produces = "application/json", consumes = "application/json")
     @ApiImplicitParams({

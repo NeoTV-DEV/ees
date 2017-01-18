@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/v1/file")
-@Api(value = "文件服务 API", description = "文件服务 API")
+@Api(value = "文件服务 API", tags = "文件服务", description = "API")
 public class FileController {
     @ApiOperation(value = "文件上传", notes = "", response = ImageUploadReturn.class, consumes = "multipart/form-data")
     @ApiImplicitParams({
