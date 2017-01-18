@@ -4,7 +4,9 @@ import cn.dianjingquan.api.dao.model.Error;
 import cn.dianjingquan.api.dao.model.body.QRule;
 import cn.dianjingquan.api.dao.model.body.QVerifyFail;
 import cn.dianjingquan.api.dao.model.body.QVerifySuccess;
+import cn.dianjingquan.api.dao.model.entity.MatchClosed;
 import cn.dianjingquan.api.dao.model.entity.MatchVerify;
+import com.fasterxml.jackson.databind.JsonNode;
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -142,5 +144,20 @@ public class MatchControlController {
     @RequestMapping(value = "/v1/match/verify_notify/fail", method = RequestMethod.POST)
     public Error notifyVerifyFail(@RequestBody QVerifyFail json) {
         return new Error();
+    }
+
+    @ApiOperation(value = "获取比赛是否关闭信息", notes = "", response = MatchClosed.class, produces = "application/json", consumes = "application/json")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "比赛id", paramType = "query", dataType = "long"),
+            @ApiImplicitParam(name = "access_token", value = "token", paramType = "query", dataType = "string")
+    })
+    @ApiResponses({
+            @ApiResponse(code = 200, message = ""),
+            @ApiResponse(code = 400, message = "客户端请求错误"),
+            @ApiResponse(code = 500, message = "服务端内部错误"),
+    })
+    @GetMapping("/v1/match/closed")
+    public MatchClosed isClosed(){
+        return new MatchClosed();
     }
 }

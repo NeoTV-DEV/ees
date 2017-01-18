@@ -37,4 +37,23 @@ public class DynamicController {
                                @PathVariable int page, @PathVariable int page_count){
         return new DynamicList();
     }
+
+    @ApiOperation(value = "获取对阵动态列表", notes = "", response = DynamicList.class, produces = "application/json", consumes = "application/json")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "vs id", paramType = "query", dataType = "string"),
+            @ApiImplicitParam(name = "access_token", value = "token", paramType = "query", dataType = "string"),
+            @ApiImplicitParam(name = "match_id", value = "比赛 id", paramType = "query", dataType = "long"),
+            @ApiImplicitParam(name = "page", value = "页码", paramType = "query", dataType = "integer"),
+            @ApiImplicitParam(name = "page_count", value = "每页显示条数", paramType = "query", dataType = "integer")
+    })
+    @ApiResponses({
+            @ApiResponse(code = 400,message = "客户端请求错误"),
+            @ApiResponse(code = 500,message = "服务端内部错误"),
+    })
+    @GetMapping("/v1/match/vs/dynamic")
+    public DynamicList getDynamicVS(@PathVariable long uid, @PathVariable long id, @PathVariable String access_token,
+                               @PathVariable String role, @PathVariable int round, @PathVariable int game,
+                               @PathVariable int page, @PathVariable int page_count){
+        return new DynamicList();
+    }
 }

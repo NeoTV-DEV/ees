@@ -1,12 +1,11 @@
 package cn.dianjingquan.api.controller;
 
 import cn.dianjingquan.api.dao.model.BigEye;
+import cn.dianjingquan.api.dao.model.Error;
 import cn.dianjingquan.api.dao.model.EventList;
+import com.sun.xml.internal.ws.api.model.MEP;
 import io.swagger.annotations.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -53,5 +52,20 @@ public class EventController {
     @GetMapping("/home")
     public EventList getAll(@PathVariable long uid, @PathVariable String access_token){
         return new EventList();
+    }
+
+    @ApiOperation(value = "标记已读消息", notes = "", response = Error.class, consumes = "application/json")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "uid", value = "用户id", paramType = "query", dataType = "long"),
+            @ApiImplicitParam(name = "access_token", value = "token", paramType = "query", dataType = "string"),
+            @ApiImplicitParam(name = "key", value = "消息key", paramType = "query", dataType = "string")
+    })
+    @ApiResponses({
+            @ApiResponse(code = 400,message = "客户端请求错误"),
+            @ApiResponse(code = 500,message = "服务端内部错误"),
+    })
+    @RequestMapping(value = "/", method = RequestMethod.DELETE)
+    public Error readEvent(@PathVariable long uid, @PathVariable String access_token, @PathVariable String key){
+        return new Error();
     }
 }
