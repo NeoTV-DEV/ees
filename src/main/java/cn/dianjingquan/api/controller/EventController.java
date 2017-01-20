@@ -1,9 +1,7 @@
 package cn.dianjingquan.api.controller;
 
-import cn.dianjingquan.api.dao.model.BigEye;
 import cn.dianjingquan.api.dao.model.Error;
 import cn.dianjingquan.api.dao.model.EventList;
-import com.sun.xml.internal.ws.api.model.MEP;
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -66,6 +64,20 @@ public class EventController {
     })
     @RequestMapping(value = "/", method = RequestMethod.DELETE)
     public Error readEvent(@PathVariable long uid, @PathVariable String access_token, @PathVariable String key){
+        return new Error();
+    }
+
+    @ApiOperation(value = "清空所有未读信息", notes = "", response = Error.class, consumes = "application/json")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "uid", value = "用户id", paramType = "query", dataType = "long"),
+            @ApiImplicitParam(name = "access_token", value = "token", paramType = "query", dataType = "string")
+    })
+    @ApiResponses({
+            @ApiResponse(code = 400,message = "客户端请求错误"),
+            @ApiResponse(code = 500,message = "服务端内部错误"),
+    })
+    @GetMapping("/v1/match/event/readall")
+    public Error readAllEvent(@PathVariable long uid, @PathVariable String access_token){
         return new Error();
     }
 }

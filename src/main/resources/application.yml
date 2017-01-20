@@ -18,6 +18,10 @@ spring:
     #url: jdbc:mysql://rdsanqi6zanqi6zpublic.mysql.rds.aliyuncs.com/djq_match?autoReconnect=true&useSSL=false
     #username: "ees_test"
     #password: "djq-EES_2016!@#"
+  data:
+    jpa:
+      repositories:
+        enabled: false
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     database: mysql
