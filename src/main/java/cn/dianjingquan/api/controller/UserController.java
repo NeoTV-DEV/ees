@@ -4,12 +4,12 @@ import cn.dianjingquan.api.dao.model.Error;
 import cn.dianjingquan.api.dao.model.User;
 import cn.dianjingquan.api.dao.model.UserLoginReturn;
 import cn.dianjingquan.api.dao.model.UserSession;
-import com.fasterxml.jackson.databind.util.JSONPObject;
+import cn.dianjingquan.api.dao.model.body.QUserGame;
+import cn.dianjingquan.api.dao.model.entity.UserGame;
 import io.swagger.annotations.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 /**
  * Created by tommy on 2016-10-19.
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
  * cn.dianjingquan.api.controller.UserController
  */
 @RestController
-@RequestMapping("/v1/match/user")
 @Api(value = "用户操作 API", tags = "用户", description = "API")
 public class UserController {
     @ApiOperation(value = "用户注册", notes = "", response = UserSession.class, consumes = "application/json")
@@ -33,7 +32,7 @@ public class UserController {
             @ApiResponse(code = 409,message = ""),
             @ApiResponse(code = 500,message = "服务端内部错误"),
     })
-    @RequestMapping(value = "/register/one",method = RequestMethod.POST)
+    @RequestMapping(value = "/v1/match/user/register/one",method = RequestMethod.POST)
     public UserSession regByStepOne(){
         return new UserSession();
     }
@@ -54,7 +53,7 @@ public class UserController {
             @ApiResponse(code = 409,message = ""),
             @ApiResponse(code = 500,message = "服务端内部错误"),
     })
-    @RequestMapping(value = "/attribute",method = RequestMethod.POST)
+    @RequestMapping(value = "/v1/match/user/attribute",method = RequestMethod.POST)
     public Error setAttribute(){
         return new Error();
     }
@@ -71,7 +70,7 @@ public class UserController {
             @ApiResponse(code = 409,message = ""),
             @ApiResponse(code = 500,message = "服务端内部错误"),
     })
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @RequestMapping(value = "/v1/match/user/login",method = RequestMethod.POST)
     public UserLoginReturn login(){
         return new UserLoginReturn();
     }
@@ -89,7 +88,7 @@ public class UserController {
             @ApiResponse(code = 409,message = ""),
             @ApiResponse(code = 500,message = "服务端内部错误"),
     })
-    @RequestMapping(value = "/isreceivemsg",method = RequestMethod.POST)
+    @RequestMapping(value = "/v1/match/user/isreceivemsg",method = RequestMethod.POST)
     public Error isReceiveMSG(){
         return new Error();
     }
@@ -106,7 +105,7 @@ public class UserController {
             @ApiResponse(code = 409,message = ""),
             @ApiResponse(code = 500,message = "服务端内部错误"),
     })
-    @GetMapping("/show")
+    @GetMapping("/v1/match/user/show")
     public User getShow(@PathVariable String uid, @PathVariable String access_token){
         return new User();
     }
@@ -122,53 +121,79 @@ public class UserController {
             @ApiResponse(code = 409,message = ""),
             @ApiResponse(code = 500,message = "服务端内部错误"),
     })
-    @RequestMapping(value = "/logout",method = RequestMethod.POST)
+    @RequestMapping(value = "/v1/match/user/logout",method = RequestMethod.POST)
     public Error logout(@PathVariable String access_token){
         return new Error();
     }
 
-    @RequestMapping(value = "/nickname",method = RequestMethod.POST)
+    @RequestMapping(value = "/v1/match/user/nickname",method = RequestMethod.POST)
     public String setNickName(){
         return "ok";
     }
 
-    @RequestMapping(value = "/avatar",method = RequestMethod.POST)
+    @RequestMapping(value = "/v1/match/user/avatar",method = RequestMethod.POST)
     public String setAvatar(){
         return "ok";
     }
 
-    @RequestMapping(value = "/gender",method = RequestMethod.POST)
+    @RequestMapping(value = "/v1/match/user/gender",method = RequestMethod.POST)
     public String setGender(){
         return "ok";
     }
 
-    @RequestMapping(value = "/bgimg",method = RequestMethod.POST)
+    @RequestMapping(value = "/v1/match/user/bgimg",method = RequestMethod.POST)
     public String setBgImg(){
         return "ok";
     }
 
-    @RequestMapping(value = "/game",method = RequestMethod.POST)
+    @RequestMapping(value = "/v1/match/user/game",method = RequestMethod.POST)
     public String setGame(){
         return "ok";
     }
 
-    @RequestMapping(value = "/pwd",method = RequestMethod.POST)
+    @RequestMapping(value = "/v1/match/user/pwd",method = RequestMethod.POST)
     public String updatePWD(){
         return "ok";
     }
 
-    @GetMapping("/nickname")
+    @GetMapping("/v1/match/user/nickname")
     public String getNickName(){
         return "ok";
     }
 
-    @GetMapping("/mobile/{mobile}")
+    @GetMapping("/v1/match/user/mobile/{mobile}")
     public String getUserByMobile(@PathVariable String mobile){
         return "ok";
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/v1/match/user/id/{id}")
     public String getUser(@PathVariable String id){
         return "ok";
+    }
+
+    @ApiOperation(value = "设置用户游戏列表", notes = "", response = Error.class, produces = "application/json", consumes = "application/json")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = ""),
+            @ApiResponse(code = 400, message = "客户端请求错误"),
+            @ApiResponse(code = 500, message = "服务端内部错误"),
+    })
+    @RequestMapping(value = "/v3/match/usergame",method = RequestMethod.POST)
+    public Error createV3(@RequestBody QUserGame json){
+        return new Error();
+    }
+
+    @ApiOperation(value = "获取用户游戏列表", notes = "", response = UserGame.class, produces = "application/json", consumes = "application/json")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "uid", value = "用户id", paramType = "query", dataType = "long"),
+            @ApiImplicitParam(name = "access_token", value = "token", paramType = "query", dataType = "string")
+    })
+    @ApiResponses({
+            @ApiResponse(code = 200, message = ""),
+            @ApiResponse(code = 400, message = "客户端请求错误"),
+            @ApiResponse(code = 500, message = "服务端内部错误"),
+    })
+    @GetMapping("/v3/match/usergame/findbyuid")
+    public ArrayList<UserGame> finderByUIDV3(@PathVariable long id, @PathVariable String accessToken){
+        return new ArrayList<UserGame>();
     }
 }

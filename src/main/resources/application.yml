@@ -1,6 +1,6 @@
 server:
   port: 9020
-  address: 10.10.20.124
+  address: 10.10.20.80
 redis:
   host: 10.10.50.232
   port: 6379
