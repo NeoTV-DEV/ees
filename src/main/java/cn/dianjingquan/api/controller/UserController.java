@@ -5,6 +5,8 @@ import cn.dianjingquan.api.dao.model.User;
 import cn.dianjingquan.api.dao.model.UserLoginReturn;
 import cn.dianjingquan.api.dao.model.UserSession;
 import cn.dianjingquan.api.dao.model.body.QUserGame;
+import cn.dianjingquan.api.dao.model.body.QUserPwd;
+import cn.dianjingquan.api.dao.model.body.QUserPwdExtend;
 import cn.dianjingquan.api.dao.model.entity.UserGame;
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.*;
@@ -151,9 +153,15 @@ public class UserController {
         return "ok";
     }
 
+    @ApiOperation(value = "设置用户游戏列表", notes = "", response = Error.class, produces = "application/json", consumes = "application/json")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = ""),
+            @ApiResponse(code = 400, message = "客户端请求错误"),
+            @ApiResponse(code = 500, message = "服务端内部错误"),
+    })
     @RequestMapping(value = "/v1/match/user/pwd",method = RequestMethod.POST)
-    public String updatePWD(){
-        return "ok";
+    public Error updatePWD(@RequestBody QUserPwd json){
+        return new Error();
     }
 
     @GetMapping("/v1/match/user/nickname")
@@ -171,14 +179,25 @@ public class UserController {
         return "ok";
     }
 
-    @ApiOperation(value = "设置用户游戏列表", notes = "", response = Error.class, produces = "application/json", consumes = "application/json")
+    @ApiOperation(value = "用户修改密码", notes = "", response = Error.class, produces = "application/json", consumes = "application/json")
     @ApiResponses({
             @ApiResponse(code = 200, message = ""),
             @ApiResponse(code = 400, message = "客户端请求错误"),
             @ApiResponse(code = 500, message = "服务端内部错误"),
     })
-    @RequestMapping(value = "/v3/match/usergame",method = RequestMethod.POST)
-    public Error createV3(@RequestBody QUserGame json){
+    @RequestMapping(value = "/v1/match/user/pwd",method = RequestMethod.POST)
+    public Error updatePwd(@RequestBody QUserPwd json){
+        return new Error();
+    }
+
+    @ApiOperation(value = "用户修改密码(带原有密码验证)", notes = "", response = Error.class, produces = "application/json", consumes = "application/json")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = ""),
+            @ApiResponse(code = 400, message = "客户端请求错误"),
+            @ApiResponse(code = 500, message = "服务端内部错误"),
+    })
+    @RequestMapping(value = "/v3/match/user/pwd",method = RequestMethod.POST)
+    public Error changePwd(@RequestBody QUserPwdExtend json){
         return new Error();
     }
 
